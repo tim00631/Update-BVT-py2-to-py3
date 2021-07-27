@@ -2,7 +2,7 @@
 
 ## FOR MASTER
 ### Step 1
-Unzip Update-BVT-py2-to-py3 to C:\Administrator\Desktop\Update-BVT-py2-to-py3
+Unzip Update-BVT-py2-to-py3 to C:\Administrator\Downloads\Update-BVT-py2-to-py3
 
 ### Step 2
 Right click `run_install.bat` and click **Run as Administrator**.
@@ -15,5 +15,8 @@ After installation python3, right click `pip_install.bat` and click **Run as an 
 ## FOR SLAVE
 Step1 and Step2 is the same with MASTER
 
-## Step3
+## Step 3
 After installing python3, right click `slave.bat` and click **Run as an Administrator**.
+
+## Step 4
+Restart SLAVE to check if rpycautorun.reg can work.
