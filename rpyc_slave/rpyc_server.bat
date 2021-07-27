@@ -1,0 +1,1 @@
+powershell -Command "Start-Process 'c:\Observer\rpyc_server2.bat' -Verb RunAs "

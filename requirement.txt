@@ -1,0 +1,8 @@
+requests
+pyVim
+pyVmomi
+robotframework
+configparser
+pyyaml
+enum34
+rpyc==4.1.5
