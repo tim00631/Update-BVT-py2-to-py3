@@ -1,5 +1,5 @@
 # Update-BVT-py2-to-py3
-
+A simple upgrade tool for BVT master and slave machines.
 ## FOR MASTER
 ### Step 1
 Download this repository
