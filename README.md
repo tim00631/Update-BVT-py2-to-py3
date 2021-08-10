@@ -16,7 +16,8 @@ A simple auto-upgrade tool for BVT master and slave machines
 ## FOR SLAVE
 ### Step 1
 * Enter folder `slave`
-* Right-click `slave_step1.bat` and click **Run as Administrator**, it will do 3 things:
+* Right-click `slave_step1.bat` and click **Run as Administrator**, it will do 4 things:
+    * Disable Windows Defender
     * Check if DSA and AMSP are uninstalled
     * Turn off firewall
     * Upgrade python version to 3.8.10
