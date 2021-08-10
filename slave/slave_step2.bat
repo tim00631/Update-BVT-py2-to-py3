@@ -27,8 +27,10 @@ echo ERROR    [X] Failed to add registry value 'autowinlogon.reg'
 echo INFO    [V] Succssfully added registry value 'autowinlogon.reg'
 
 :: UAC to lowest
-%windir%\System32\cmd.exe /k %windir%\System32\reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f
+%windir%\System32\reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f
 if %errorlevel%==0 goto success_uac_lowest
 echo ERROR    [X] Failed to modify UAC to lowest
 :success_uac_lowest
 echo INFO    [V] Succssfully modified UAC to lowest
+
+pause

@@ -1,5 +1,12 @@
 @echo off
 
+:: turn off windows defender
+powershell -executionpolicy bypass -file util\disable_windefender.ps1
+if %errorlevel%==0 goto successfully_turn_off_windows_defender
+echo ERROR    [X] Failed to turn off windows defender 
+:successfully_turn_off_windows_defender
+echo INFO    [V] Successfully turned off windows defender
+
 :: Uninstall DSA
 wmic.exe product where name="Trend Micro Deep Security Agent" call uninstall
 sc query ds_agent
@@ -21,6 +28,7 @@ if %errorlevel%==0 goto successfully_turn_off_firewall
 echo ERROR    [X] Failed to turn off firewall.
 :successfully_turn_off_firewall
 echo INFO    [V] Succssfully turned off firewall.
+
 
 :: Upgrade Python
 cd C:\Users\Administrator\Downloads\Update-BVT-py2-to-py3\util\
