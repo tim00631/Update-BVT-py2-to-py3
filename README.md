@@ -1,23 +1,34 @@
 # Update-BVT-py2-to-py3
-A simple auto-upgrade tool for BVT master and slave machines.
-## FOR MASTER
-### Step 1
+A simple auto-upgrade tool for BVT master and slave machines
+
+### Preliminary
 * Download this repository
 * Unzip Update-BVT-py2-to-py3 to C:\Administrator\Downloads\Update-BVT-py2-to-py3
 
-### Step 2
-* Right click `run_install.bat` and click **Run as Administrator**. You can input `python` in the command prompt to check the version whether is 3.8.10 or not.
+## FOR MASTER
+### Step 1
+* Enter folder `master`
+* Right-click `master_step1.bat` and click **Run as Administrator**, it will upgrade python version to 3.8.10
 
-### Step 3
-* After installation python3, right click `pip_install.bat` and click **Run as an Administrator**, it will install the dependency package of BVT.
+### Step 2
+* After doing step 1, right click `master_step2.bat` and click **Run as an Administrator**, it will install the master dependency package by pip
 
 ## FOR SLAVE
-* Step 1 and Step 2 is the same with MASTER.
+### Step 1
+* Enter folder `slave`
+* Right-click `slave_step1.bat` and click **Run as Administrator**, it will do 3 things:
+    * Check if DSA and AMSP are uninstalled
+    * Turn off firewall
+    * Upgrade python version to 3.8.10
+
+### Step 2
+* (Replace the `DefaultPassword` in slave/autologon.reg with your slave machine's password)
 
 ### Step 3
-* (Replace the `DefaultPassword` in autologon.reg with your SLAVE's password)
-* After installing python3, right click `slave.bat` and click **Run as an Administrator**.
-
+* After doing step 1, right-click `slave_step2.bat` and click **Run as an Administrator**, it will do 3 things:
+    * Install the slave dependency package by pip
+    * Add rpycautorun.reg and autowinlogon.log to registry key
+    * Modify UAC to lowest
 ### Step 4
-* Restart SLAVE to check if rpycautorun.reg can work.
+* Restart SLAVE to check if rpycautorun.reg can work
 * Remember to **shutdown** and take a snapshot named **RpyC**

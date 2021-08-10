@@ -1,10 +1,10 @@
 ### Uninstall Python
 try {
     Get-Package "*python*" | Uninstall-Package
-    Write-Output "Successfully uninstall python."
 }
 catch {
-    Write-Output $_.Exception.Message
+    Write-Output "ERROR:    $_.Exception.Message"
+    exit 1
 }
 
 ### Remove Python 2.7 path in PATH environment variable
@@ -20,14 +20,14 @@ try {
 }
 catch {
     Write-Output $_.Exception.Message
+    exit 1
 }
 try {
     ### Remove Python2.7 Directory
     $remove_path = "C:\Python27"
     Remove-Item -LiteralPath $remove_path -Force -Recurse
-    Write-Output "Successfully remove python dir."
 }
 catch {
-    Write-Output $_.Exception.Message
-    return
+    Write-Output "ERROR:    $_.Exception.Message"
+    exit 1
 }
