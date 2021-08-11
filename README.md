@@ -31,5 +31,5 @@ A simple auto-upgrade tool for BVT master and slave machines
     * Add rpycautorun.reg and autowinlogon.log to registry key
     * Modify UAC to lowest
 ### Step 4
-* Restart SLAVE to check if rpycautorun.reg can work
-* Remember to **shutdown** and take a snapshot named **RpyC**
+* **Shutdown** and take a snapshot named **RpyC**
+* Restart slave to check if rpycautorun.reg can work and Windows Defender is disabled
