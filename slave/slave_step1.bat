@@ -17,7 +17,7 @@ if %errorlevel%==0 goto successfully_disable_realtime_monitering
 echo ERROR    [X] Failed to disable Real-Time Monitering
 pause
 EXIT 1
-:successfully_disable_anti_spyware
+:successfully_disable_realtime_monitering
 echo INFO    [V] Successfully disable Real-Time Monitering
 echo INFO    [V] Successfully turned off windows defender!
 
