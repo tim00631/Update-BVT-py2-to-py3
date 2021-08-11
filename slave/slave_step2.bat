@@ -15,19 +15,26 @@ copy /Y rpyc_server.bat %observer_folder%
 copy /Y rpyc_server2.bat %observer_folder%
 
 regedit.exe /s rpycautorun.reg
+reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v Observer
 if %errorlevel%==0 goto success_rpycautorun
 echo ERROR    [X] Failed to add registry value 'rpycautorun.reg'
 :success_rpycautorun
 echo INFO    [V] Succssfully added registry value 'rpycautorun.reg'
 
 regedit.exe /s autowinlogon.reg
-if %errorlevel%==0 goto success_autowinlogon
-echo ERROR    [X] Failed to add registry value 'autowinlogon.reg'
-:success_autowinlogon
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v DefaultUserName
+if %errorlevel% NEQ 0 goto fail_autowinlogon
+reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v DefaultPassword
+if %errorlevel% NEQ 0 goto fail_autowinlogon
 echo INFO    [V] Succssfully added registry value 'autowinlogon.reg'
+goto :UAC
+:fail_autowinlogon
+echo ERROR    [X] Failed to add registry value 'autowinlogon.reg'
 
 :: UAC to lowest
+:UAC
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f
+reg query "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableLUA
 if %errorlevel%==0 goto success_uac_lowest
 echo ERROR    [X] Failed to modify UAC to lowest
 :success_uac_lowest
