@@ -15,6 +15,7 @@ A simple auto-upgrade tool for BVT master and slave machines
 
 ## FOR SLAVE
 ### Step 1
+* For those version after win10_20h1, Windows Defender will be automatically turned on. So please turn off all the button in the virus & threat protection settings.
 * Enter folder `slave`
 * Right-click `slave_step1.bat` and click **Run as Administrator**, it will do 4 things:
     * Disable Windows Defender
