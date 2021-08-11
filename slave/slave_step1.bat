@@ -3,6 +3,8 @@
 :: turn off windows defender
 @echo Disable Windows Defender
 reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
+
 if %errorlevel%==0 goto successfully_turn_off_windows_defender
 echo ERROR    [X] Failed to turn off windows defender 
 :successfully_turn_off_windows_defender
