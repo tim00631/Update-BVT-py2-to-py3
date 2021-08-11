@@ -1,14 +1,21 @@
 @echo off
 
-:: turn off windows defender
+:: turn off windows defender (W10)
 @echo Disable Windows Defender
 reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
-reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
+reg query "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware
+if %errorlevel%==0 goto successfully_disable_anti_spyware
+echo ERROR    [X] Failed to disable AntiSpyware
+:successfully_disable_anti_spyware
+echo INFO    [V] Successfully disable AntiSpyware
 
-if %errorlevel%==0 goto successfully_turn_off_windows_defender
-echo ERROR    [X] Failed to turn off windows defender 
-:successfully_turn_off_windows_defender
-echo INFO    [V] Successfully turned off windows defender
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
+reg query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring
+if %errorlevel%==0 goto successfully_disable_realtime_monitering
+echo ERROR    [X] Failed to disable Real-Time Monitering
+:successfully_disable_anti_spyware
+echo INFO    [V] Successfully disable Real-Time Monitering
+echo INFO    [V] Successfully turned off windows defender!
 
 :: Uninstall DSA
 wmic.exe product where name="Trend Micro Deep Security Agent" call uninstall
