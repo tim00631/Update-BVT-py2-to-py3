@@ -1,6 +1,19 @@
 @echo off
+systeminfo | find "Windows Server 2016"
+if %errorlevel% NEQ 0 goto turn_off_windows_defender
+:: uninstall windows defender (Windows Server 2016)
+cd C:\Users\Administrator\Downloads\Update-BVT-py2-to-py3\util\
+powershell -executionpolicy bypass -file uninstall_server_windows_defender.ps1
+if %errorlevel%==0 goto successfully_uninstall_defender
+echo ERROR    [X] Failed to uninstall windows defender
+pause
+EXIT 1
+:successfully_uninstall_defender
+echo INFO    [V] Succssfully uninstalled windows defender
+goto uninstall_dsa
 
 :: turn off windows defender (W10)
+:turn_off_windows_defender
 @echo Disable Windows Defender
 reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
 reg query "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware
@@ -22,6 +35,7 @@ echo INFO    [V] Successfully disable Real-Time Monitering
 echo INFO    [V] Successfully turned off windows defender!
 
 :: Uninstall DSA
+:uninstall_dsa
 wmic.exe product where name="Trend Micro Deep Security Agent" call uninstall
 sc query ds_agent
 if %errorlevel%==1060 goto successfully_uninstalled_dsa
