@@ -1,6 +1,6 @@
 @echo off
 systeminfo | find "Windows Server 2016"
-if %errorlevel% NEQ 0 goto turn_off_windows_defender
+if %errorlevel% NEQ 0 goto check_windows7
 :: uninstall windows defender (Windows Server 2016)
 cd C:\Users\Administrator\Downloads\Update-BVT-py2-to-py3\util\
 powershell -executionpolicy bypass -file uninstall_server_windows_defender.ps1
@@ -12,8 +12,22 @@ EXIT 1
 echo INFO    [V] Succssfully uninstalled windows defender
 goto uninstall_dsa
 
+:check_windows7
+systeminfo | find "Windows 7"
+if %errorlevel% NEQ 0 goto disable_windows_defender
+:: stop windows defender (Windows 7)
+sc stop windefend
+sc query windefend | find "STOPPED"
+if %errorlevel%==0 goto success_stop_defender
+echo ERROR    [X] Failed to stop windows defender
+pause
+EXIT 1
+:success_stop_defender
+echo INFO    [V] Successfully stop windows defender for Windows 7
+goto uninstall_dsa
+
 :: turn off windows defender (W10)
-:turn_off_windows_defender
+:disable_windows_defender
 @echo Disable Windows Defender
 reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
 reg query "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware
