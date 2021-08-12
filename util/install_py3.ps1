@@ -13,6 +13,7 @@ $pythonDownloadPath = "C:\Users\Administrator\Downloads\python-$pythonVersion$ar
 $pythonInstallDir = "C:\Program Files\Python38"
 
 try{
+    [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
     (New-Object Net.WebClient).DownloadFile($pythonUrl, $pythonDownloadPath)
     & $pythonDownloadPath /quiet InstallAllUsers=1 PrependPath=1 Include_test=0 TargetDir=$pythonInstallDir
 }
