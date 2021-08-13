@@ -78,8 +78,8 @@ EXIT 1
 echo INFO    [V] Succssfully turned off firewall.
 
 
-:: Upgrade Python
-cd C:\Users\Administrator\Downloads\Update-BVT-py2-to-py3\util\
+:: Upgrade Python 
+cd C:\Users\%username%\Downloads\Update-BVT-py2-to-py3\util\
 powershell -executionpolicy bypass -file uninstall_py2.ps1
 if %errorlevel%==0 goto successfully_uninstall_python2
 echo ERROR    [X] Failed to uninstall python2.

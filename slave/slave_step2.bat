@@ -1,5 +1,5 @@
 @echo off
-set slave_folder=C:\Users\Administrator\Downloads\Update-BVT-py2-to-py3\slave\
+set slave_folder=C:\Users\%username%\Downloads\Update-BVT-py2-to-py3\slave\
 set observer_folder=C:\Observer
 
 cd %slave_folder%

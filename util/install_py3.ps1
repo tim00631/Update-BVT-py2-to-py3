@@ -9,7 +9,7 @@ else {
 
 $pythonVersion = "3.8.10"
 $pythonUrl = "https://www.python.org/ftp/python/$pythonVersion/python-$pythonVersion$archBit.exe"
-$pythonDownloadPath = "C:\Users\Administrator\Downloads\python-$pythonVersion$archBit.exe"
+$pythonDownloadPath = "C:\Users\$env:USERNAME\Downloads\python-$pythonVersion$archBit.exe" # FIXME $env:username
 $pythonInstallDir = "C:\Program Files\Python38"
 
 try{
