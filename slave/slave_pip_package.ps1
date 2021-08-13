@@ -6,6 +6,6 @@ try {
     Set-ItemProperty -Path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\' -Name 'ProxyEnable' -Value 1
 }
 catch {
-    Write-Output "ERROR:    $_.Exception.Message"
+    Write-Output "ERROR:    $_"
     exit 1
 }

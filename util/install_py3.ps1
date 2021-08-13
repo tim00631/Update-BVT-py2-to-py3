@@ -18,7 +18,7 @@ try{
     & $pythonDownloadPath /quiet InstallAllUsers=1 PrependPath=1 Include_test=0 TargetDir=$pythonInstallDir
 }
 catch {
-    Write-Output "ERROR:    $_.Exception.Message"
+    Write-Output "ERROR:    $_"
     exit 1
 }
 
