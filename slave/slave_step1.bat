@@ -28,25 +28,25 @@ goto uninstall_dsa
 
 :: turn off windows defender (W10)
 :disable_windows_defender
-@echo Disable Windows Defender
-reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
-reg query "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware
-if %errorlevel%==0 goto successfully_disable_anti_spyware
-echo ERROR    [X] Failed to disable AntiSpyware
-pause
-EXIT 1
-:successfully_disable_anti_spyware
-echo INFO    [V] Successfully disable AntiSpyware
+@REM @echo Disable Windows Defender
+@REM reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
+@REM reg query "HKLM\Software\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware
+@REM if %errorlevel%==0 goto successfully_disable_anti_spyware
+@REM echo ERROR    [X] Failed to disable AntiSpyware
+@REM pause
+@REM EXIT 1
+@REM :successfully_disable_anti_spyware
+@REM echo INFO    [V] Successfully disable AntiSpyware
 
-reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
-reg query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring
-if %errorlevel%==0 goto successfully_disable_realtime_monitering
-echo ERROR    [X] Failed to disable Real-Time Monitering
-pause
-EXIT 1
-:successfully_disable_realtime_monitering
-echo INFO    [V] Successfully disable Real-Time Monitering
-echo INFO    [V] Successfully turned off windows defender!
+@REM reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
+@REM reg query "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v DisableRealtimeMonitoring
+@REM if %errorlevel%==0 goto successfully_disable_realtime_monitering
+@REM echo ERROR    [X] Failed to disable Real-Time Monitering
+@REM pause
+@REM EXIT 1
+@REM :successfully_disable_realtime_monitering
+@REM echo INFO    [V] Successfully disable Real-Time Monitering
+@REM echo INFO    [V] Successfully turned off windows defender!
 
 :: Uninstall DSA
 :uninstall_dsa
