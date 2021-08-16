@@ -25,7 +25,7 @@ A simple auto-upgrade tool for BVT master and slave machines
     * Upgrade python version to 3.8.10
 
 ### Step 2
-* (Replace the `DefaultPassword` in slave/autologon.reg with your slave machine's password)
+* (Replace the `DefaultPassword` in slave/autowinlogon.reg with your slave machine's password)
 
 ### Step 3
 * After doing step 1, right-click `slave_step2.bat` and click **Run as an Administrator**, it will do 3 things:
