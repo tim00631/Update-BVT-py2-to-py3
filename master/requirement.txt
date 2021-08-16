@@ -1,8 +1,8 @@
-requests
-pyVim
-pyVmomi
-robotframework
-configparser
-pyyaml
-enum34
+requests==2.26.0
+pyVim==3.0.2
+pyVmomi==7.0.2
+robotframework==4.0.3
+configparser==5.0.2
+pyyaml==5.4.1
+enum34==1.1.10
 rpyc==4.1.5
